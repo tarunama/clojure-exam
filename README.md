@@ -20,6 +20,8 @@ FIXME: explanation
 
 * https://github.com/ring-clojure/ring/wiki/Getting-Started
 * https://ayato-p.github.io/clojure-beginner/intro_web_development/index.html
+* https://github.com/ayato-p/intro-web-clojure/
+* http://clojure-doc.org/articles/ecosystem/java_jdbc/home.html
 
 ## License
 
