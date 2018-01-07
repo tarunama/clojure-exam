@@ -1,5 +1,4 @@
 (ns exam.core
-  (:gen-class)
   (:require [ring.adapter.jetty :as jetty]))
 
 (defn handler

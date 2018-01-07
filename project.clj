@@ -15,6 +15,7 @@
     [org.clojure/java.jdbc "0.7.5"]
     [honeysql "0.9.1"]
     [ragtime "0.7.2"]
+    [mysql/mysql-connector-java "5.1.45"]
   ]
   :main ^:skip-aot exam.core
   :target-path "target/%s"
