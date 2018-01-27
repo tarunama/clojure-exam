@@ -22,6 +22,9 @@ FIXME: explanation
 * https://ayato-p.github.io/clojure-beginner/intro_web_development/index.html
 * https://github.com/ayato-p/intro-web-clojure/
 * http://clojure-doc.org/articles/ecosystem/java_jdbc/home.html
+* http://peterstratton.com/posts-output/2017-01-28-postgres-and-clojure-using-clojure-java-jdbc/
+* https://dev.mysql.com/doc/refman/5.7/en/example-foreign-keys.html
+* https://practicalli.github.io/spacemacs/spacemacs-basics/
 
 ## License
 
