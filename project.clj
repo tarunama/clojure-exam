@@ -17,6 +17,10 @@
     [ragtime "0.7.2"]
     [mysql/mysql-connector-java "5.1.45"]
   ]
+  :repl {:plugins [[cider/cider-nrepl "0.10.0-SNAPSHOT"]
+                    [refactor-nrepl "2.0.0-SNAPSHOT"]]
+         :dependencies [[alembic "0.3.2"]
+                        [org.clojure/tools.nrepl "0.2.12"]]}
   :main ^:skip-aot exam.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
