@@ -1,16 +1,23 @@
 (ns exam.core
-  (:require [ring.adapter.jetty :as jetty]))
+  (:require [ring.adapter.jetty :as jetty]
+            [ring.util.response :as resp]
+            [integrant.core :as ig]))
 
-(defn handler
-  [request]
-  {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body "Hello World"})
+(def config
+  {:handler/greet {:name "Alice"}
+   :adapter/jetty {:port 3002
+                   :handler (ig/ref :handler/greet)}})
 
-(defn run-server
-  [port]
-  (jetty/run-jetty handler {:port port}))
+(defmethod ig/init-key :adapter/jetty [_ {:keys [handler] :as opts}]
+  (jetty/run-jetty handler (-> opts
+                               (dissoc :handler)
+                               (assoc :join? false))))
 
-(defn -main
-  [& args]
-  (run-server 3000))
+(defmethod ig/init-key :handler/greet [_ {:keys [name]}]
+  (fn [_] (resp/response (str "Hello " name))))
+
+(defmethod ig/halt-key! :adapter/jetty [_ server]
+  (.stop server))
+
+(ig/init config)
+
