@@ -25,6 +25,7 @@ FIXME: explanation
 * http://peterstratton.com/posts-output/2017-01-28-postgres-and-clojure-using-clojure-java-jdbc/
 * https://dev.mysql.com/doc/refman/5.7/en/example-foreign-keys.html
 * https://practicalli.github.io/spacemacs/spacemacs-basics/
+* https://qiita.com/ayato_p/items/8ed4688a4540491e87e0
 
 ## License
 

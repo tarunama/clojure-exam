@@ -3,7 +3,7 @@
             [ring.util.response :as resp]
             [integrant.core :as ig]))
 
-;27.5 hour
+;30 hour
 (def config
   {:handler/greet {:name "Alice"}
    :adapter/jetty {:port 3002
