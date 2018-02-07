@@ -11,6 +11,7 @@
     [buddy "2.0.0"]
     [funcool/struct "1.1.0"]
     [ring "1.5.0"]
+    [ring/ring-mock "0.3.2"]
     [hiccup "1.0.5"]
     [org.clojure/java.jdbc "0.7.5"]
     [honeysql "0.9.1"]
