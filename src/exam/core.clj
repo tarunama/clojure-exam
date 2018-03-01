@@ -3,7 +3,7 @@
             [ring.util.response :as resp]
             [integrant.core :as ig]))
 
-;30.5 hour
+;; 50 hour
 (def config
   {:handler/greet {:name "Alice"}
    :adapter/jetty {:port 3002
@@ -20,5 +20,5 @@
 (defmethod ig/halt-key! :adapter/jetty [_ server]
   (.stop server))
 
-(ig/init config)
-
+(defn -main [& args]
+  (ig/init config))
