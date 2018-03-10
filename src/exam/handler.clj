@@ -2,6 +2,10 @@
   (:require [bidi.ring :refer [make-handler]]
             [ring.util.response :as res]))
 
+(defn index-handler
+  [request]
+  (res/response "Index page"))
+
 (defn articles-handler
   [request]
   (res/response "Article index"))
@@ -15,6 +19,7 @@
   (res/response (str "Comment id is " (:comment_id route-params))))
 
 (def handler
-  (make-handler ["/" {"articles" {"/" articles-handler
+  (make-handler ["/" {"" index-handler
+                      "articles" {"/" articles-handler
                                   ["/" [#"\d+" :id]] {"/" article-handler
                                                       ["/comments/" [#"\d+" :comment_id]] comment-handler}}}]))
