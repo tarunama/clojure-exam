@@ -6,6 +6,8 @@
 (deftest handler-test
   []
   (testing "Valid cases"
+    (is (= (handler (request :get "/"))
+           {:status 200 :header {} :body "Index page"}))
     (is (= (handler (request :get "/articles/"))
            {:status 200 :headers {} :body "Article index"}))
     (is (= (handler (request :get "/articles/1/"))
