@@ -1,24 +1,23 @@
 (ns exam.core
   (:require [ring.adapter.jetty :as jetty]
-            [ring.util.response :as resp]
-            [integrant.core :as ig]))
+            [ring.middleware.session :refer [wrap-session]]
+            [ring.middleware.flash :refer [wrap-flash]]
+            [exam.handler :refer [handler]]))
 
-;30.5 hour
-(def config
-  {:handler/greet {:name "Alice"}
-   :adapter/jetty {:port 3002
-                   :handler (ig/ref :handler/greet)}})
+(defonce server (atom nil))
 
-(defmethod ig/init-key :adapter/jetty [_ {:keys [handler] :as opts}]
-  (jetty/run-jetty handler (-> opts
-                               (dissoc :handler)
-                               (assoc :join? false))))
+(defn run-server [handler]
+  (when-not @server
+    (reset! @server (jetty/run-jetty handler {:port 3002}))))
 
-(defmethod ig/init-key :handler/greet [_ {:keys [name]}]
-  (fn [_] (resp/response (str "Hello " name))))
+(defn stop-server []
+  (when @server
+    (.stop @server)))
 
-(defmethod ig/halt-key! :adapter/jetty [_ server]
-  (.stop server))
+(defn -main [& args]
+  (-> handler
+      wrap-session
+      wrap-flash
+      run-server))
 
-(ig/init config)
 
